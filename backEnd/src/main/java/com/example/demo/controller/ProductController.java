@@ -22,7 +22,6 @@ public class ProductController {
     @ResponseStatus(HttpStatus.OK)
     public List<Product> getProduct(@RequestHeader("Authorization") long authId)
     {
-        System.out.println(authId);
         return productService.getProduct();
     }
 
