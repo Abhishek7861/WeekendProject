@@ -4,6 +4,7 @@ import com.example.demo.model.Product;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.service.UserService;
@@ -28,7 +29,7 @@ public class UserController {
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
-    public Long Login(@RequestBody Map<String,Object> payload){
+    public ResponseEntity<Object> Login(@RequestBody Map<String,Object> payload){
         String email = payload.get("email").toString();
         String password = payload.get("password").toString();
         return userService.getUser(email,password);
@@ -36,14 +37,14 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    private User addUser(@RequestBody User user)
+    private ResponseEntity<Object> addUser(@RequestBody User user)
     {
         return userService.addUser(user);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    private User updateUser(@RequestBody User user)
+    private ResponseEntity<Object> updateUser(@RequestBody User user)
     {
         return userService.addUser(user);
     }

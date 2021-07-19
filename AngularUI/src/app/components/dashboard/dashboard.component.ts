@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
     }
     this.productService.getMyProductList().subscribe((res)=>{
         this.productService.products = res as Product[];
-        console.log(res);
     })
   }
 

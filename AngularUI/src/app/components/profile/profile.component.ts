@@ -50,7 +50,8 @@ export class ProfileComponent implements OnInit {
     }
 
       this.authService.updateUser(user).subscribe((res)=>{
-        console.log(res);
+        this.flashMessagesService.show("Profile Update Success!",{cssClass: 'alert-success', timeout: 3000});
+        this.ngOnInit();
       })
   }
 

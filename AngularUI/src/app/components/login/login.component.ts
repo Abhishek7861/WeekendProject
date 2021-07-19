@@ -46,17 +46,12 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.authService.loginUser(user).subscribe(data=>{
-      if(data==0){
-        this.flashMessagesService.show("Invalid Email or password",{cssClass: 'alert-danger', timeout: 3000});
-      }
-      else{
-      localStorage.setItem("authValue",data.toString());
+    this.authService.loginUser(user).subscribe((data)=>{
+      let responseData:any = data
+      localStorage.setItem("authValue",responseData.data.id.toString());
       this.toggleLogin.emit(true);
       this.router.navigate(['/dashboard']);
-      }
     });
-
   }
 
 }
